@@ -1,8 +1,6 @@
 const mongoose  = require('mongoose');
 const Book = require('../models/Book');
 
-
-
 //get all books
 
 const getAllBooks = async(req, res)=>{
