@@ -31,6 +31,7 @@ const createNewBook = async(req, res)=>{
     const {title, author, description, published_date, publisher } = req.body
     try{
         const createbook = await Book.create({title, author, description, published_date, publisher})
+       
         res.status(200).json(createbook)
 
     }catch(error){
