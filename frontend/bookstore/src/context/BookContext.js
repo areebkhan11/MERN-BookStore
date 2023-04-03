@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const BookContext = createContext();
 
 export let booksReducer = (state, action) => {
+    
   switch (action.type) {
     case "SET_BOOKS":
       return {
@@ -11,6 +12,10 @@ export let booksReducer = (state, action) => {
     case "CREATE_BOOKS":
       return {
         books: [action.payload, ...state.books],
+      };
+    case "DELETE_BOOK":
+      return {
+        books: state.books.filter((b)=> b._id !== action.payload._id)
       };
       default:
           return state
