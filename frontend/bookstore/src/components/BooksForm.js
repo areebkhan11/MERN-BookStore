@@ -33,7 +33,6 @@ export default function BooksForm() {
             setError(json.error)
         }
         if(response.ok){
-            
             dispatch({type: "CREATE_BOOKS", payload: json})
             setForm({title:'', author:'', description:'', publisher:''})
 
