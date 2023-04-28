@@ -20,7 +20,7 @@ export default function BooksForm() {
             description : form.description,
             publisher : form.publisher,
         }
-        const response = await fetch('api/books',{
+        const response = await fetch(`${process.env.REACT_APP_API}/api/books`,{
             method: 'POST',
             body: JSON.stringify(book),
             headers: {

@@ -5,7 +5,7 @@ import { useBookContext } from '../hooks/useBookContext'
 export default function BookDetails({book}) {
   const {dispatch} = useBookContext()
   const handleClick = async () =>{
-      const response = await fetch('/api/books/' + book._id,{
+      const response = await fetch(`${process.env.REACT_APP_API}/api/books/` + book._id,{
         method: 'DELETE',
       })
       const json = await response.json()

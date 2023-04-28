@@ -6,7 +6,7 @@ export default function Home() {
     const {books, dispatch} = useBookContext();
     useEffect(()=>{
         const fetchBooks = async () => {
-            const response = await fetch('api/books')
+            const response = await fetch(`${process.env.REACT_APP_API}/api/books`)
             const json = await response.json()
             if(response.ok){
               dispatch({type: "SET_BOOKS", payload: json})
