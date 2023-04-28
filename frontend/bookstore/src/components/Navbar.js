@@ -17,7 +17,7 @@ export default function Navbar() {
     <header>
       <div className="container">
         <Link to="/">
-          <h1>Book store</h1>
+          <h1>Book store modified</h1>
         </Link>
         <nav>
           <div>
