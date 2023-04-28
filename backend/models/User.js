@@ -14,12 +14,16 @@ const userSchema = new Schema ({
     password:{
         type:String,
         required: true
+    },
+    role: {
+        type: Number,
+        default: 0 // 0 for user , 1 for admin
     }
 })
 
 // static signup method
 userSchema.statics.signup = async function(email, password) {
-   
+   console.log(email, ",,,---")
     const exists = await this.findOne({email})
     if(!email || !password){
         throw Error('All fields must be filled')
