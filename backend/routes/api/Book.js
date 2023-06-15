@@ -1,8 +1,13 @@
 // routes/api/books.js
 
+const {createNewBook, getAllBooks, getSingleBook, deleteSingleBook, updateSingleBook} = require('../../controllers/booksControllers')
 const express = require('express');
 const router = express.Router();
-const {createNewBook, getAllBooks, getSingleBook, deleteSingleBook, updateSingleBook} = require('../../controllers/booksControllers')
+const requireAuth = require('../../middleware/requireAuth')
+
+//require auth for all books route
+router.use(requireAuth)
+
 //get all books
 router.get('/', getAllBooks);
 

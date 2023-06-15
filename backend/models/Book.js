@@ -19,6 +19,11 @@ const BookSchema = new mongoose.Schema({
   },
   publisher: {
     type: String
+  },
+  user_id:{
+    type: String,
+    required: true
+    
   }
 }, {timestamps: true});
 
