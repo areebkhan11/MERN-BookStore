@@ -4,7 +4,8 @@ const Book = require('../models/Book');
 //get all books
 
 const getAllBooks = async(req, res)=>{
-    const allBooks = await Book.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+    const allBooks = await Book.find({user_id}).sort({createdAt: -1})
     res.status(200).json(allBooks)
 }
 
@@ -29,11 +30,29 @@ const getSingleBook = async(req, res)=>{
 const createNewBook = async(req, res)=>{
         //add doc to db
     const {title, author, description, published_date, publisher } = req.body
-    try{
-        const createbook = await Book.create({title, author, description, published_date, publisher})
-       
-        res.status(200).json(createbook)
 
+    let emptyFields = []
+
+    if(!title){
+        emptyFields.push("title")
+    }
+    if(!author){
+        emptyFields.push("author")
+    } if(!description){
+        emptyFields.push("description")
+    } if(!publisher){
+        emptyFields.push("publisher")
+    }
+
+    if(emptyFields.length > 0 ){
+        return res.status(400).json({error:'please fill all fields', emptyFields })  
+    }
+    
+
+    try{
+        const user_id = req.user._id
+        const createbook = await Book.create({title, author, description, published_date, publisher, user_id})
+        res.status(200).json(createbook)
     }catch(error){
         res.status(400).json({error: error.message })
     }
